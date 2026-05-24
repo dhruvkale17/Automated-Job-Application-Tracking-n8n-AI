@@ -17,3 +17,6 @@ An automated, asynchronous backend data pipeline built in n8n that ingests unstr
 1. Create a new workflow canvas inside your n8n instance.
 2. Click the top-right menu -> **Import from File**.
 3. Upload `job-application-tracker.json` and configure your local credentials (Google, OpenRouter).
+
+<img width="2196" height="813" alt="image" src="https://github.com/user-attachments/assets/b438c7e4-eeee-4954-83f3-17bfd55b6ffb" />
+
