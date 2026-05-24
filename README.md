@@ -1,4 +1,4 @@
-# AI-Driven Job Application Tracking & Fault-Tolerant Pipeline
+# AI-Driven Job Application Tracking 
 
 An automated, asynchronous backend data pipeline built in n8n that ingests unstructured incoming emails, classifies application status metrics using an LLM, and routes the status into a comprehensive tracking sheet. ALso added real-time system diagnostics using a Discord operations bot.
 
