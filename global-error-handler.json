@@ -1,0 +1,81 @@
+{
+  "name": "global-error-handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -912,
+        -288
+      ],
+      "id": "2600a313-7224-4779-9dd2-0c8e9d338af0",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "763275499791187968",
+          "mode": "list",
+          "cachedResultName": "DrewDroid's server",
+          "cachedResultUrl": "https://discord.com/channels/763275499791187968"
+        },
+        "sendTo": "user",
+        "userId": {
+          "__rl": true,
+          "value": "441497452638502912",
+          "mode": "list",
+          "cachedResultName": "drewdroid99"
+        },
+        "content": "=Hi, an error in one you n8n workflows",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        -608,
+        -288
+      ],
+      "id": "52a28eb9-1eee-4e21-8b6d-427fd0b3f009",
+      "name": "discord bot",
+      "webhookId": "e3656c19-9186-43ab-b387-30b9bc7c030e",
+      "credentials": {
+        "discordBotApi": {
+          "id": "9D4B7XOkr2VdeAXS",
+          "name": "Discord Bot account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "discord bot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "058b2ed2-47ad-48b0-bda6-5d59036677fa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "514aa917481c9ac5339c8bdaf37f3244c7ec30c3fb03aef568c46617a8f617e7"
+  },
+  "id": "j6sx7p8rwp3cNMBm",
+  "tags": []
+}
