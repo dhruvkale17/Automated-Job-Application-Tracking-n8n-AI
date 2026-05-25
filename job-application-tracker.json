@@ -4,11 +4,11 @@
     {
       "parameters": {
         "operation": "getAll",
-        "limit": 10,
+        "limit": 1,
         "simple": false,
         "filters": {
           "labelIds": [
-            "Label_185785676146400308"
+            ""
           ],
           "receivedAfter": "={{ $now.minus({ hours: 24 }).toISO() }}"
         },
@@ -18,14 +18,14 @@
       "typeVersion": 2.2,
       "position": [
         -528,
-        -160
+        32
       ],
       "id": "61835d37-0fa4-4a90-ab0f-e83f8dad2134",
       "name": "Get many messages",
-      "webhookId": "99748aec-dac9-4438-a5a6-ce9ae72420a9",
+      "webhookId": "",
       "credentials": {
         "gmailOAuth2": {
-          "id": "a1fFPnhYnJOXp5fC",
+          "id": "",
           "name": "Gmail account"
         }
       }
@@ -37,31 +37,11 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -240,
-        -160
+        -304,
+        32
       ],
       "id": "7b915542-3b00-4965-8963-e79d39f97a47",
       "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "model": "openai/gpt-oss-120b:free",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        16,
-        -160
-      ],
-      "id": "a8882ef5-6184-4d72-87e0-27495663fbe0",
-      "name": "OpenRouter Chat Model",
-      "credentials": {
-        "openRouterApi": {
-          "id": "naUypdLra54kov1N",
-          "name": "OpenRouter account"
-        }
-      }
     },
     {
       "parameters": {
@@ -74,7 +54,7 @@
           },
           "conditions": [
             {
-              "id": "e1767c72-fde6-4779-8b65-b3cf886824cb",
+              "id": "",
               "leftValue": "={{ $json.is_relevant }}",
               "rightValue": "",
               "operator": {
@@ -91,43 +71,28 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        608,
-        -160
+        400,
+        16
       ],
-      "id": "985cad17-0831-4e5f-b674-3f09da0e170d",
+      "id": ",
       "name": "If"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=You are an expert data extraction assistant processing a backlog of historical job application emails. \n\nAnalyze the provided email subject and body text. Perform the following tasks:\n\n1. RELEVANCE CHECK: Determine if this email is directly related to a job application you submitted, an interview update, a status change, an offer, or a rejection. \n   - If it is spam, a general newsletter, a promotional email, or unrelated to an active/past application, set the \"is_relevant\" field to false.\n\n2. EXTRACTION: If the email IS relevant (\"is_relevant\": true), extract the following fields:\n   - company_name: The company name.\n   - job_title: The title of the role (use \"Unknown\" if not mentioned).\n   - status: Carefully analyze the ENTIRE email content before choosing. Choose exactly ONE of these four statuses:\n  \n  * \"rejected\": If the email contains phrases indicating they are not moving forward, rejecting, or closing the application (e.g., \"not moving forward\", \"unsuccessful\", \"chosen other candidates\", \"keep your resume on file\", \"unfortunately\"). This takes priority over any polite compliments at the beginning of the email.\n  \n  * \"interview scheduled\": If the email explicitly asks to book a call, sends a calender invite, phone screen, technical test, or live interview.\n  \n  * \"cv shortlisted\": Only if they explicitly state your CV has been shortlisted. And hinting they might schedule interview soon.\n  \n  * \"offer received\": If they are extending a formal job offer or contract\n\n  * if none of the above, give a heading in a few words for me to show what the email was about. Example: account creation, application sent, etc. \n\nReturn your answer STRICTLY as a valid JSON object matching this schema. Do not include markdown code blocks around the JSON wrapper if using JSON mode:\n{    \n  \"time_received\": \"string or null\"\n  \"is_relevant\": boolean,\n  \"company_name\": \"string or null\",\n  \"job_title\": \"string or null\",\n  \"status\": \"string or null\",\n  \"reason_for_the_status\": \"string or null\"\n}\n\nEmail Subject: {{ $json.headers.subject }}\nEmail Body: {{ $json.text }}\nEmail Timestamp: {{ $json.date }}",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3.1,
-      "position": [
-        16,
-        -384
-      ],
-      "id": "e08953cf-3963-4cea-b00e-881147eb4489",
-      "name": "AI Agent"
     },
     {
       "parameters": {
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU",
+          "value": "",
           "mode": "list",
           "cachedResultName": "Job applications tracker",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU/edit?usp=drivesdk"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Relevant",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -194,14 +159,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        960,
-        -176
+        624,
+        0
       ],
-      "id": "427d8cf9-bfd8-4e38-b1b0-52bb4d81f6a5",
+      "id": "",
       "name": "Relevant mails",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "su20LeQdnYs5zDx3",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -211,17 +176,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU",
+          "value": "",
           "mode": "list",
           "cachedResultName": "Job applications tracker",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU/edit?usp=drivesdk"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/"
         },
         "sheetName": {
           "__rl": true,
           "value": 1157085199,
           "mode": "list",
           "cachedResultName": "Irrelevant",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mLGQ0PPk35ksGP-61juZEYA25sKUTWTBS7vYaUL3DNU/edit#gid=1157085199"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -288,14 +253,14 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        960,
-        32
+        624,
+        208
       ],
-      "id": "237c74e7-e2ec-4e1a-a649-81aefb8e32cc",
+      "id": "",
       "name": "Irrelevant mails",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "su20LeQdnYs5zDx3",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -313,10 +278,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.3,
       "position": [
-        -832,
-        -144
+        -752,
+        48
       ],
-      "id": "0fb6cd67-1edf-467a-9ccf-5492ed72c02a",
+      "id": "",
       "name": "Schedule Trigger",
       "retryOnFail": true,
       "alwaysOutputData": true,
@@ -370,11 +335,46 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        384,
-        -160
+        192,
+        16
       ],
       "id": "4d46f58b-ef5e-484b-b5f7-b57b576a8b84",
       "name": "Map Data to Sheet"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert data extraction assistant processing a backlog of historical job application emails. \n\nAnalyze the provided email subject and body text. Perform the following tasks:\n\n1. RELEVANCE CHECK: Determine if this email is directly related to a job application you submitted, an interview update, a status change, an offer, or a rejection. \n   - If it is spam, a general newsletter, a promotional email, or unrelated to an active/past application, set the \"is_relevant\" field to false.\n\n2. EXTRACTION: If the email IS relevant (\"is_relevant\": true), extract the following fields:\n   - company_name: The company name.\n   - job_title: The title of the role (use \"Unknown\" if not mentioned).\n   - status: Carefully analyze the ENTIRE email content before choosing. Choose exactly ONE of these four statuses:\n  \n  * \"rejected\": If the email contains phrases indicating they are not moving forward, rejecting, or closing the application (e.g., \"not moving forward\", \"unsuccessful\", \"chosen other candidates\", \"keep your resume on file\", \"unfortunately\"). This takes priority over any polite compliments at the beginning of the email.\n  \n  * \"interview scheduled\": If the email explicitly asks to book a call, sends a calender invite, phone screen, technical test, or live interview.\n  \n  * \"cv shortlisted\": Only if they explicitly state your CV has been shortlisted. And hinting they might schedule interview soon.\n  \n  * \"offer received\": If they are extending a formal job offer or contract\n\n  * if none of the above, give a heading in a few words for me to show what the email was about. Example: account creation, application sent, etc. \n\nReturn your answer STRICTLY as a valid JSON object matching this schema. Do not include markdown code blocks around the JSON wrapper if using JSON mode:\n{    \n  \"time_received\": \"string or null\"\n  \"is_relevant\": boolean,\n  \"company_name\": \"string or null\",\n  \"job_title\": \"string or null\",\n  \"status\": \"string or null\",\n  \"reason_for_the_status\": \"string or null\"\n}\n\nEmail Subject: {{ $json.headers.subject }}\nEmail Body: {{ $json.text }}\nEmail Timestamp: {{ $json.date }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -64,
+        -160
+      ],
+      "id": "e08953cf-3963-4cea-b00e-881147eb4489",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "qwen3-vl:4b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        32
+      ],
+      "id": "3026cadc-94eb-4a50-a98c-d0aef1d78644",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "",
+          "name": "Ollama account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -402,17 +402,6 @@
         ]
       ]
     },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -430,17 +419,6 @@
         [
           {
             "node": "Irrelevant mails",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Map Data to Sheet",
             "type": "main",
             "index": 0
           }
@@ -490,6 +468,28 @@
           }
         ]
       ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Map Data to Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -501,7 +501,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "17d2f3e2-1432-41d8-94af-edf4f45d3b42",
+  "versionId": "383532ec-291e-4cd6-9c39-40a387351a33",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "514aa917481c9ac5339c8bdaf37f3244c7ec30c3fb03aef568c46617a8f617e7"
