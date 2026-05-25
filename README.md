@@ -9,6 +9,9 @@ An automated, asynchronous backend data pipeline built in n8n that ingests unstr
 * **Logging:** Logs Date, Job title, Company Name, Status, Reason for the status in the sheet.
 * **Fault Tolerance:** A decoupled Global Error Handling sub-workflow intercepts runtime exceptions via an independent trigger framework.
 
+## NOTE
+* Pre-Processing with labelling: To save on token and API usage, create a filter in your email app to label incoming emails if they contain your job search related terms. The workflow then only pulls the emails with the label.
+
 ## 📂 Repository Structure
 * `job-application-tracker.json` - Main data processing and classification blueprint.
 * `global-error-handler.json` - Global error catching and Discord API router.
